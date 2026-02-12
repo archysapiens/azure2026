@@ -23,6 +23,9 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "saadmin"
 		},
+		"trigger1_properties_pipeline4_parameters_SALIDA": {
+			"value": "SALIDA_SCHEDULER"
+		},
 		"containerUri": {
 			"value": ""
 		},
