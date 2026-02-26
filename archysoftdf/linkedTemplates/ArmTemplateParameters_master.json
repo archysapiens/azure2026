@@ -14,6 +14,12 @@
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
+		"MyConnx_ABS_connectionString": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "archysoft-server-db.database.windows.net"
 		},
@@ -21,6 +27,18 @@
 			"value": "archysoft-db"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "saadmin"
+		},
+		"AzureSynapseArtifacts1_properties_typeProperties_endpoint": {
+			"value": "https://synapse2026.dev.azuresynapse.net"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "archysoft-server-db.database.windows.net"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "archysoftsql"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
 			"value": "saadmin"
 		},
 		"trigger1_properties_pipeline4_parameters_SALIDA": {
