@@ -1,0 +1,31 @@
+{
+	"name": "Archivo_destino",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Cnnex_01",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Nombre_Archivo": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Nombre_Archivo",
+					"type": "Expression"
+				},
+				"container": "deliver"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

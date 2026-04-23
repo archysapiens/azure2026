@@ -1,0 +1,78 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AzureSqlDatabase1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CANAL as short,",
+				"          CANAL_DESC as string,",
+				"          TIENDAID as short,",
+				"          TIENDADES as string,",
+				"          FECHA as string,",
+				"          TICKET as long,",
+				"          VENDEDOR as integer,",
+				"          VENDEDORNOMBRE as string,",
+				"          TERMINAL as short,",
+				"          DEPTO as integer,",
+				"          DEPTO_DESC as string,",
+				"          DIVISION as short,",
+				"          DIVISION_DESC as string,",
+				"          MONTO_TOTAL as double,",
+				"          NOMBRE as string,",
+				"          APELLIDOPATERNO as string,",
+				"          APELLIDOMATERNO as string,",
+				"          TEL as long,",
+				"          CEL as long,",
+				"          EMAIL as string,",
+				"          TIPOPLASTICOID as short,",
+				"          TIPOPLASTICODES as string,",
+				"          EDAD as short,",
+				"          SEXO as string,",
+				"          {_c24} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(timeatam = CANAL) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: 'dbo',",
+				"     tableName: 'restaurante',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     recreate: true,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

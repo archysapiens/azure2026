@@ -1,0 +1,15 @@
+{
+	"name": "archysoftdf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "71d3b978-b69b-42e5-9f09-8f297edad4fa",
+		"tenantId": "a401cfbb-18b1-41d5-ad76-d66c7f783d14"
+	}
+}

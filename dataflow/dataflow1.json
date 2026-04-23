@@ -1,0 +1,62 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          CANAL as string,",
+				"          CANAL_DESC as string,",
+				"          TIENDAID as string,",
+				"          TIENDADES as string,",
+				"          FECHA as string,",
+				"          TICKET as string,",
+				"          VENDEDOR as string,",
+				"          VENDEDORNOMBRE as string,",
+				"          TERMINAL as string,",
+				"          DEPTO as string,",
+				"          DEPTO_DESC as string,",
+				"          DIVISION as string,",
+				"          DIVISION_DESC as string,",
+				"          MONTO_TOTAL as string,",
+				"          NOMBRE as string,",
+				"          APELLIDOPATERNO as string,",
+				"          APELLIDOMATERNO as string,",
+				"          TEL as string,",
+				"          CEL as string,",
+				"          EMAIL as string,",
+				"          TIPOPLASTICOID as string,",
+				"          TIPOPLASTICODES as string,",
+				"          EDAD as string,",
+				"          SEXO as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

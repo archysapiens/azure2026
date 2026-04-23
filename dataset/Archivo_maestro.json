@@ -1,0 +1,28 @@
+{
+	"name": "Archivo_maestro",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Cnnex_01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "lista_archivos.csv",
+				"container": "staging"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "archivo1.csv",
+				"type": "String"
+			}
+		]
+	}
+}

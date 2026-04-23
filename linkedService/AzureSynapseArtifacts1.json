@@ -1,0 +1,13 @@
+{
+	"name": "AzureSynapseArtifacts1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSynapseArtifacts",
+		"typeProperties": {
+			"endpoint": "https://synapse2026.dev.azuresynapse.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/dc263c2e-4152-47f5-8874-69448dc27a30/resourceGroups/archysoftgroup/providers/Microsoft.Synapse/workspaces/synapse2026"
+		}
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline4",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SALIDA": "SALIDA_SCHEDULER"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2026-02-11T22:50:00",
+				"endTime": "2026-02-11T22:55:00",
+				"timeZone": "Central Standard Time (Mexico)"
+			}
+		}
+	}
+}

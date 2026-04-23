@@ -1,0 +1,121 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "archivo_de_invitacion_restaurantes_20240810.csv",
+				"container": "staging"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CANAL",
+				"type": "String"
+			},
+			{
+				"name": "CANAL_DESC",
+				"type": "String"
+			},
+			{
+				"name": "TIENDAID",
+				"type": "String"
+			},
+			{
+				"name": "TIENDADES",
+				"type": "String"
+			},
+			{
+				"name": "FECHA",
+				"type": "String"
+			},
+			{
+				"name": "TICKET",
+				"type": "String"
+			},
+			{
+				"name": "VENDEDOR",
+				"type": "String"
+			},
+			{
+				"name": "VENDEDORNOMBRE",
+				"type": "String"
+			},
+			{
+				"name": "TERMINAL",
+				"type": "String"
+			},
+			{
+				"name": "DEPTO",
+				"type": "String"
+			},
+			{
+				"name": "DEPTO_DESC",
+				"type": "String"
+			},
+			{
+				"name": "DIVISION",
+				"type": "String"
+			},
+			{
+				"name": "DIVISION_DESC",
+				"type": "String"
+			},
+			{
+				"name": "MONTO_TOTAL",
+				"type": "String"
+			},
+			{
+				"name": "NOMBRE",
+				"type": "String"
+			},
+			{
+				"name": "APELLIDOPATERNO",
+				"type": "String"
+			},
+			{
+				"name": "APELLIDOMATERNO",
+				"type": "String"
+			},
+			{
+				"name": "TEL",
+				"type": "String"
+			},
+			{
+				"name": "CEL",
+				"type": "String"
+			},
+			{
+				"name": "EMAIL",
+				"type": "String"
+			},
+			{
+				"name": "TIPOPLASTICOID",
+				"type": "String"
+			},
+			{
+				"name": "TIPOPLASTICODES",
+				"type": "String"
+			},
+			{
+				"name": "EDAD",
+				"type": "String"
+			},
+			{
+				"name": "SEXO",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

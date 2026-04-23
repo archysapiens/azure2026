@@ -1,0 +1,94 @@
+{
+	"name": "SqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_DOCUMENTO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NO_CUENTA",
+				"type": "varchar"
+			},
+			{
+				"name": "CAMPUS",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "CV_PROGRAMA",
+				"type": "varchar"
+			},
+			{
+				"name": "CV_DOCUMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "CICLO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PERIODO_BANNER",
+				"type": "varchar"
+			},
+			{
+				"name": "DOCUMENTO_CRITICO",
+				"type": "varchar"
+			},
+			{
+				"name": "ESTATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "FECHA_ENTREGA",
+				"type": "varchar"
+			},
+			{
+				"name": "FECHA_COMPROMISO",
+				"type": "varchar"
+			},
+			{
+				"name": "FECHA_CANCELADO",
+				"type": "varchar"
+			},
+			{
+				"name": "FECHA_CARGA",
+				"type": "varchar"
+			},
+			{
+				"name": "BN_SITUACION",
+				"type": "char"
+			},
+			{
+				"name": "FE_CREACION",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ID_USUARIO_CREO",
+				"type": "varchar"
+			},
+			{
+				"name": "FE_MODIFICACION",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_USUARIO_MODIFICA",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ods",
+			"table": "DSB_ALUMNO_DOCUMENTOS"
+		}
+	}
+}

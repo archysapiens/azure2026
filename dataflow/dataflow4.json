@@ -1,0 +1,89 @@
+{
+	"name": "dataflow4",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Destino",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     archivo_salida as string (\"out_columna_calculada.txt\"),",
+				"     parameter1 as string ($archivo_salida),",
+				"     parameter2 as string ($archivo_salida)",
+				"}",
+				"source(output(",
+				"          CANAL as string,",
+				"          CANAL_DESC as string,",
+				"          TIENDAID as string,",
+				"          TIENDADES as string,",
+				"          FECHA as string,",
+				"          TICKET as string,",
+				"          VENDEDOR as string,",
+				"          VENDEDORNOMBRE as string,",
+				"          TERMINAL as string,",
+				"          DEPTO as string,",
+				"          DEPTO_DESC as string,",
+				"          DIVISION as string,",
+				"          DIVISION_DESC as string,",
+				"          MONTO_TOTAL as string,",
+				"          NOMBRE as string,",
+				"          APELLIDOPATERNO as string,",
+				"          APELLIDOMATERNO as string,",
+				"          TEL as string,",
+				"          CEL as string,",
+				"          EMAIL as string,",
+				"          TIPOPLASTICOID as string,",
+				"          TIPOPLASTICODES as string,",
+				"          EDAD as string,",
+				"          SEXO as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(Nueva_edad = toInteger(EDAD) + 10,",
+				"          anio = substring(FECHA, 7, 4)) ~> derivedColumn1",
+				"derivedColumn1 select(mapColumn(",
+				"          NOMBRE,",
+				"          APELLIDOPATERNO,",
+				"          APELLIDOMATERNO,",
+				"          EDAD,",
+				"          SEXO,",
+				"          Nueva_edad,",
+				"          anio",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:[($archivo_salida)],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,99 @@
+{
+	"name": "Laboratorio_04",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Empleados",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Archivo_destino",
+						"type": "DatasetReference",
+						"parameters": {
+							"Nombre_Archivo": "copiado.txt"
+						}
+					}
+				]
+			},
+			{
+				"name": "Registrar_Error",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Copy_Empleados",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "errorMensaje",
+					"value": "@activity('Copy_Empleados').error.message"
+				}
+			}
+		],
+		"variables": {
+			"errorMensaje": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Lab2026"
+		},
+		"annotations": []
+	}
+}

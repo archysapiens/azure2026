@@ -1,0 +1,88 @@
+{
+	"name": "df_join",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "EMPLOYEES",
+						"type": "DatasetReference"
+					},
+					"name": "Employees"
+				},
+				{
+					"dataset": {
+						"referenceName": "Department",
+						"type": "DatasetReference"
+					},
+					"name": "deparment"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Destino",
+						"type": "DatasetReference"
+					},
+					"name": "Resultado"
+				}
+			],
+			"transformations": [
+				{
+					"name": "JODEPARTMENTID"
+				},
+				{
+					"name": "select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EMPLOYEE_ID as string,",
+				"          FIRST_NAME as string,",
+				"          LAST_NAME as string,",
+				"          EMAIL as string,",
+				"          PHONE_NUMBER as string,",
+				"          HIRE_DATE as string,",
+				"          JOB_ID as string,",
+				"          SALARY as string,",
+				"          COMMISSION_PCT as string,",
+				"          MANAGER_ID as string,",
+				"          DEPARTMENT_ID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Employees",
+				"source(output(",
+				"          DEPARTMENT_ID as string,",
+				"          DEPARTMENT_NAME as string,",
+				"          MANAGER_ID as string,",
+				"          LOCATION_ID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> deparment",
+				"Employees, deparment join(Employees@DEPARTMENT_ID == deparment@DEPARTMENT_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> JODEPARTMENTID",
+				"JODEPARTMENTID select(mapColumn(",
+				"          EMPLOYEE_ID,",
+				"          FIRST_NAME,",
+				"          LAST_NAME,",
+				"          EMAIL,",
+				"          DEPARTMENT_NAME",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['resultado_join'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> Resultado"
+			]
+		}
+	}
+}

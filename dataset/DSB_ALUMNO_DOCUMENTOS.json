@@ -1,0 +1,96 @@
+{
+	"name": "DSB_ALUMNO_DOCUMENTOS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dlk",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DSB_ALUMNO_DOCUMENTOS.csv",
+				"container": "ods"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID_DOCUMENTO",
+				"type": "String"
+			},
+			{
+				"name": "NO_CUENTA",
+				"type": "String"
+			},
+			{
+				"name": "CAMPUS",
+				"type": "String"
+			},
+			{
+				"name": "CV_PROGRAMA",
+				"type": "String"
+			},
+			{
+				"name": "CV_DOCUMENTO",
+				"type": "String"
+			},
+			{
+				"name": "CICLO",
+				"type": "String"
+			},
+			{
+				"name": "PERIODO_BANNER",
+				"type": "String"
+			},
+			{
+				"name": "DOCUMENTO_CRITICO",
+				"type": "String"
+			},
+			{
+				"name": "ESTATUS",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_ENTREGA",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_COMPROMISO",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_CANCELADO",
+				"type": "String"
+			},
+			{
+				"name": "FECHA_CARGA",
+				"type": "String"
+			},
+			{
+				"name": "BN_SITUACION",
+				"type": "String"
+			},
+			{
+				"name": "FE_CREACION",
+				"type": "String"
+			},
+			{
+				"name": "ID_USUARIO_CREO",
+				"type": "String"
+			},
+			{
+				"name": "FE_MODIFICACION",
+				"type": "String"
+			},
+			{
+				"name": "ID_USUARIO_MODIFICA",
+				"type": "String"
+			}
+		]
+	}
+}

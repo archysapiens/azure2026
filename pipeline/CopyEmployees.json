@@ -1,0 +1,207 @@
+{
+	"name": "CopyEmployees",
+	"properties": {
+		"description": "CopyEmployees",
+		"activities": [
+			{
+				"name": "Copy_grn",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "staging//EMPLOYEES_DATA_TABLE.dsv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.EMPLOYEES"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "EMPLOYEE_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMPLOYEE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FIRST_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FIRST_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_NAME",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LAST_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PHONE_NUMBER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PHONE_NUMBER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "HIRE_DATE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "HIRE_DATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "JOB_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "JOB_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SALARY",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SALARY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMISSION_PCT",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COMMISSION_PCT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "MANAGER_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MANAGER_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DEPARTMENT_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DEPARTMENT_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_grn",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_grn",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-02-26T21:44:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,278 @@
+{
+	"name": "pipeline6",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ID_DOCUMENTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID_DOCUMENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "NO_CUENTA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NO_CUENTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CAMPUS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CAMPUS",
+									"type": "Int16",
+									"physicalType": "smallint"
+								}
+							},
+							{
+								"source": {
+									"name": "CV_PROGRAMA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CV_PROGRAMA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CV_DOCUMENTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CV_DOCUMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CICLO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CICLO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "PERIODO_BANNER",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PERIODO_BANNER",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DOCUMENTO_CRITICO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOCUMENTO_CRITICO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ESTATUS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ESTATUS",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FECHA_ENTREGA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_ENTREGA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FECHA_COMPROMISO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_COMPROMISO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FECHA_CANCELADO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_CANCELADO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FECHA_CARGA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_CARGA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BN_SITUACION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BN_SITUACION",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "FE_CREACION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FE_CREACION",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "ID_USUARIO_CREO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID_USUARIO_CREO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FE_MODIFICACION",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FE_MODIFICACION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ID_USUARIO_MODIFICA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ID_USUARIO_MODIFICA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DSB_ALUMNO_DOCUMENTOS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
